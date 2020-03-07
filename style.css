@@ -13,3 +13,7 @@ h1{
 .Game_layer{
     background-color: white;
 }
+.gameCanvasStyle{
+    border:1px solid #000000;
+    background-image: url("grass.png");
+}
