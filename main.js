@@ -9,7 +9,7 @@ img.addEventListener('load', function() {
 }, false);
 //Функции движения
 function moveLeft(){
-    
+
 }
 
 function moveRight() {
