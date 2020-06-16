@@ -4,7 +4,7 @@ let canvas = document.getElementById('gameCanvas');
 let ctx = canvas.getContext('2d');
 let img = new Image();
 img.src = "main_character.png";
-//обработка нажатия кнопок
+//Обработка нажатия кнопок
 function settings() {
     alert("Для управления используйте стрелки");
 }
@@ -79,7 +79,7 @@ mainHero.moveUp = function moveUp(){
 };
 mainHero.moveDown = function moveDown() {
 };
-/*TO DO
+/*TO DO: Сделать полноценную анимацию на каждый шаг
 mainHero.animation = function animation() {
     let i=1;
     switch (i) {
@@ -100,14 +100,13 @@ mainHero.animation = function animation() {
     }
 };
 */
-
 //Отрисовка и проверка отрисовки изображения и константы для правильной отрисовки и шагов
 let counter=0;
 function hitTestPoint(x1, y1, w1, h1, x2, y2)
 {
     //x1, y1 = x and y coordinates of object 1
     //w1, h1 = width and height of object 1
-    //x2, y2 = x and y coordinates of object 2 (usually )
+    //x2, y2 = x and y coordinates of object 2 (usually)
     if((x1 <= x2 && x1+w1 >= x2) &&
         (y1 <= y2 && y1+h1 >= y2)){
         return true;
@@ -123,9 +122,7 @@ img.addEventListener('load', function() {
                                                      }, false);
 function keyUpHandler(e){
     countOfTouch+=detectCollusion();
-    //gameState();
     if(e.key === "Right" || e.key === "ArrowRight") {
-
         if(mainHero.current_x >= 900) {
             ctx.clearRect(mainHero.current_x, mainHero.current_y, STEP, STEP);
             ctx.drawImage(img, START, mainHero.y_right, mainHero.sprite_w, mainHero.sprite_h, mainHero.current_x , mainHero.current_y, mainHero.sprite_w, mainHero.sprite_h);
@@ -156,7 +153,6 @@ function keyUpHandler(e){
             upPressed = false;
         }
     }else if(e.key === "Down" || e.key === "ArrowDown") {
-
         if (mainHero.current_y >= 400) {
             ctx.clearRect(mainHero.current_x, mainHero.current_y, STEP, STEP);
             ctx.drawImage(img, START, mainHero.y_down, mainHero.sprite_w, mainHero.sprite_h, mainHero.current_x, mainHero.current_y, mainHero.sprite_w, mainHero.sprite_h);
@@ -231,7 +227,7 @@ function detectCollusion(){
                 console.log("CHECK"+tags_check[i]);
                 console.log("TAGS"+TAGS[i]);
                 console.log("i:"+ i);
-                //прилось захардкодить из-за проблемы которой я не понимаю
+            //TO DO: Fix hardcode
             if (tags_check[0] === "<html>" ||
                 tags_check[1] === "<head>" ||
                 tags_check[2] === "</head>" ||
@@ -258,17 +254,3 @@ function detectCollusion(){
 
     }
 }
-
-/*
-function gameState() {
-    for (let i = 0; i !== tags_check.length; i++) {
-
-
-
-    }
-    console.log(score);
-    if (score >= 5) {
-        console.log("Игра пройдена");
-    }
-}
-*/
